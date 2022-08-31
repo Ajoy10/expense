@@ -1,0 +1,32 @@
+.cmp-total-amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    #total-amount-text {
+        font-size: 2rem;
+        font-weight: 600;
+
+    }
+
+    #total-amount-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: green;
+
+
+    }
+
+
+    &.loss {
+        #total-amount-text {
+            color: red;
+        }
+
+        #total-amount-icon {
+            color: red;
+        }
+    }
+}
