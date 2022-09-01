@@ -1,0 +1,74 @@
+@import "utilities/variables";
+
+// html,
+// body,
+// #root,
+// .App {
+//     height: 100vh;
+
+// }
+
+.cmp-entry-list {
+
+    margin-top: 20px;
+
+
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+
+    #no-entry {
+        opacity: .5;
+
+    }
+
+    &:first-child {
+        padding-top: 40px;
+    }
+
+    .cmp-entry {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        padding: 10px;
+        border-top: solid 1px $dark_complement;
+
+        .entry-title {
+            font-weight: 500;
+        }
+
+        .entry-money {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+
+            font-size: .7rem;
+
+            .entry-icon {
+                color: $positive;
+            }
+        }
+
+        &.loss {
+            .entry-money {
+                color: $negetive;
+
+                .entry-icon {
+                    color: $negetive;
+                }
+            }
+        }
+    }
+
+    &>:last-child {
+        border-bottom: solid 1px $dark_complement;
+
+    }
+}

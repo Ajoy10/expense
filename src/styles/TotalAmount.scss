@@ -1,8 +1,12 @@
+@import "utilities/variables";
+
 .cmp-total-amount {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
+
+    padding: 30px;
 
     #total-amount-text {
         font-size: 2rem;
@@ -14,9 +18,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: green;
+        color: $positive;
 
-
+        font-size: 1.5rem;
     }
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import "./styles/TotalAmount.scss";
+import "../styles/TotalAmount.scss";
 
 export default function TotalAmount({ totalAmount }) {
   let loss = false;

@@ -1,0 +1,44 @@
+@import "utilities/variables";
+
+.App {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+
+  font-size: 18px;
+}
+
+.stic {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: $complement;
+}
+
+
+.action-button {
+  background-color: $base;
+  color: $complement;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin: 1px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.1rem;
+
+  &.secondary {
+    background-color: unset;
+    border: solid 1px $base;
+    color: $base;
+  }
+}
