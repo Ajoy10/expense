@@ -12,11 +12,11 @@ function App() {
       </div>
       <EntryList
         entries={[
-          { title: "olo", money: -500 },
+          { title: "olo", money: -1000 },
 
           { title: "Hello", money: 500 },
           { title: "Hello", money: -500 },
-          { title: "Hello", money: 500 },
+          { title: "Hello", money: 90 },
           { title: "Hello", money: -500 },
           { title: "Beo", money: 500 },
         ]}
