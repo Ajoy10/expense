@@ -1,8 +1,12 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import "../styles/TotalAmount.scss";
+import { DataContext } from "../context/DataContext";
+import { useContext } from "react";
 
-export default function TotalAmount({ totalAmount }) {
+export default function TotalAmount() {
+  const { CalculateTotalMoneyFromEntries } = useContext(DataContext);
+  const totalAmount = CalculateTotalMoneyFromEntries();
   let loss = false;
   if (totalAmount < 0) {
     loss = true;
