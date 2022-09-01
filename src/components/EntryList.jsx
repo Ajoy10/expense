@@ -4,7 +4,7 @@ import "../styles/EntryList.scss";
 import Entry from "./Entry";
 
 export default function EntryList({ edit, onEntryEditClick }) {
-  const { entries } = useContext(DataContext);
+  const { entries, RemoveEntry } = useContext(DataContext);
   return (
     <div className="cmp-entry-list">
       {entries && entries.length > 0 ? (
@@ -20,6 +20,7 @@ export default function EntryList({ edit, onEntryEditClick }) {
               entry={item}
               edit={edit}
               onEditClick={onEntryEditClick}
+              onDeleteClick={RemoveEntry}
             />
           );
         })}

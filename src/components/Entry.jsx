@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 
-export default function Entry({ entry, edit, onEditClick }) {
+export default function Entry({ entry, edit, onEditClick, onDeleteClick }) {
   let loss = false;
   if (entry.money < 0) {
     loss = true;
@@ -21,7 +21,16 @@ export default function Entry({ entry, edit, onEditClick }) {
             <Icon icon="fe:edit" />
           </button>
 
-          <button className="small-round-button" id="entry-delete-btn">
+          <button
+            className="small-round-button"
+            id="entry-delete-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              if (window.confirm("Delete this item?")) {
+                onDeleteClick(entry.id);
+              }
+            }}
+          >
             <Icon icon="fe:trash" />
           </button>
         </div>
