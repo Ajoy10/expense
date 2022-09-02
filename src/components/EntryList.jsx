@@ -2,9 +2,6 @@ import React, { useContext } from "react";
 
 import { DataContext } from "../context/DataContext";
 
-import { db } from "../utils/db";
-import { useLiveQuery } from "dexie-react-hooks";
-
 import "../styles/EntryList.scss";
 import Entry from "./Entry";
 
