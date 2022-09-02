@@ -3,11 +3,11 @@
 .cmp-entry-form {
     width: 100%;
 
-
+    height: fit-content;
 
     position: absolute;
     bottom: 0px;
-    padding: 20px 0px 20px 0px;
+
 
     display: flex;
     flex-direction: column;
@@ -18,17 +18,93 @@
 
     z-index: 10;
 
+    // animation: entry .3s forwards;
+
+    @keyframes entry {
+        0% {
+
+            transform: translateY(500px);
+
+        }
+
+
+
+        100% {
+
+            transform: translateY(0px) scale(1, 1);
+
+        }
+    }
+
     &::before {
         content: "";
         z-index: 9;
 
         position: absolute;
 
-        top: -100vh;
+        top: -150vh;
         width: 100vw;
-        height: 100vh;
+        height: 150vh;
         background-color: #000000;
         opacity: .5;
+    }
+
+    .cmp-form {
+        width: 100%;
+        padding: 25px;
+
+        // transform: translateY(500px);
+        // animation: entry .3s .1s forwards;
+
+        @keyframes entry {
+            0% {
+
+                transform: translateY(500px);
+
+            }
+
+
+
+            100% {
+
+                transform: translateY(0px);
+
+            }
+        }
+
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-around;
+        padding: 6px;
+
+        button {
+            // width: 100%;
+
+
+
+        }
+    }
+
+    .input-group {
+        .label {
+            font-size: .9rem;
+            font-weight: 500;
+            padding-bottom: 4px;
+        }
+
+        margin : 5px;
+
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        width: 100%;
+        background-color: $dark_complement;
+        border: none;
+
+        height: 2.3rem;
     }
 }
 

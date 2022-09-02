@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
+
 import { DataContext } from "../context/DataContext";
+
+import { db } from "../utils/db";
+import { useLiveQuery } from "dexie-react-hooks";
+
 import "../styles/EntryList.scss";
 import Entry from "./Entry";
 
 export default function EntryList({ edit, onEntryEditClick }) {
   const { entries, RemoveEntry } = useContext(DataContext);
+
   return (
     <div className="cmp-entry-list">
       {entries && entries.length > 0 ? (

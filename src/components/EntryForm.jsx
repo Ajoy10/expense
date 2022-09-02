@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { useContext } from "react";
@@ -45,6 +45,11 @@ function Form({ entry, entryCloseHandler }) {
 
     return true;
   };
+
+  useEffect(() => {
+    titleElement.current.focus();
+  }, []);
+
   return (
     <div className="cmp-form">
       <form
