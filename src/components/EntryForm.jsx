@@ -53,7 +53,7 @@ function Form({ entry, entryCloseHandler }) {
   return (
     <div className="cmp-form">
       <form
-        autocomplete="off"
+        autoComplete="off"
         onSubmit={(e) => {
           Validate(e);
         }}

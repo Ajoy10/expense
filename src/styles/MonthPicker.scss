@@ -1,0 +1,82 @@
+@import "utilities/variables";
+
+.cmp-month-picker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .selected-month {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+
+        #text {
+            text-transform: capitalize;
+        }
+
+        #drop-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .month-picker-wrapper {
+        position: relative;
+        width: 100%;
+
+
+
+
+        .month-picker {
+            z-index: 100;
+
+            position: absolute;
+            top: 0;
+            left: 10px;
+
+            width: calc(100% - 20px);
+
+            text-align: center;
+
+            background-color: $dark_complement;
+            padding: 20px;
+
+
+
+            filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.14));
+            border-radius: 8px;
+
+
+            .year-cycle {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 18px;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                justify-content: center;
+                align-items: center;
+
+                gap: 10px 30px;
+
+                .cell {
+                    text-align: center;
+                    padding: 10px 4px;
+                    background-color: $complement;
+
+                    border-radius: 4px;
+
+                    text-transform: capitalize;
+                }
+
+            }
+        }
+    }
+}

@@ -5,6 +5,7 @@ import EntryList from "./components/EntryList";
 import DataContextProvider from "./context/DataContext";
 import EntryForm from "./components/EntryForm";
 import { useState } from "react";
+import MonthPicker from "./components/MonthPicker";
 
 function App() {
   const [showEntryForm, setShowEntryForm] = useState(false);
@@ -32,6 +33,7 @@ function App() {
     <div className="App">
       <DataContextProvider>
         <div className="stic">
+          <MonthPicker />
           <TotalAmount totalAmount={500} />
           <ActionButtons
             onAddClickHandler={OpenEntryForm}

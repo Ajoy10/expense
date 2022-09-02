@@ -3,6 +3,8 @@ import React from "react";
 
 import { db } from "../utils/db";
 import { useLiveQuery } from "dexie-react-hooks";
+import { useState } from "react";
+import { useEffect } from "react";
 
 // import { v4 as uuid } from "uuid";
 // import { useEffect } from "react";
@@ -12,9 +14,29 @@ export const DataContext = createContext();
 export default function DataContextProvider({ children }) {
   //const [entries, setEntries] = useState(null);
 
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [month, setMonth] = useState(new Date().getMonth());
+
+  const NextYearHandler = () => {
+    setYear((old) => old + 1);
+  };
+
+  const PreviousYearHandler = () => {
+    setYear((old) => old - 1);
+  };
+
+  const MonthClickHandler = (_month) => {
+    setMonth(_month);
+  };
+
   const entries = useLiveQuery(async () => {
-    return await db.entries.toArray();
-  });
+    return await db.entries
+      .where({
+        month,
+        year,
+      })
+      .toArray();
+  }, [month, year]);
 
   // useEffect(() => {
   //   if (!entries) {
@@ -44,9 +66,11 @@ export default function DataContextProvider({ children }) {
       const id = await db.entries.add({
         title,
         money,
+        month,
+        year,
       });
 
-      console.log(id + " Added");
+      //console.log(id + " Added");
     } catch (error) {
       console.error("Failed to add entry : " + error);
     }
@@ -104,6 +128,12 @@ export default function DataContextProvider({ children }) {
         UpdateEntry,
         RemoveEntry,
         CalculateTotalMoneyFromEntries,
+
+        month,
+        year,
+        PreviousYearHandler,
+        NextYearHandler,
+        MonthClickHandler,
       }}
     >
       {children}
