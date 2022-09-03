@@ -8,12 +8,16 @@ Latest version available here : [Web App](https://expense-tracker-a.netlify.app/
 
 ### Technologies used
 
-ReactJS - As the front end library
+ReactJS - As the front end library <br/>
 Dexie.js - For using indexedDB
+
+<br/>
+<br/>
+<br/>
 
 # CRA Readme
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
