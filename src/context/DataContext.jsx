@@ -87,7 +87,7 @@ export default function DataContextProvider({ children }) {
     // }
 
     try {
-      const id = await db.entries.add({
+      await db.entries.add({
         title,
         money,
         month,
