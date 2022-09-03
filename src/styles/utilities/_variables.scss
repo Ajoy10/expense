@@ -1,5 +1,47 @@
-$base: #000000;
-$complement: #fff;
-$dark_complement: #ECECEC;
-$positive: #1CDB18;
-$negetive: #EC4237;
+$light_black_color: #000000;
+$light_white_color: #FFFFFF;
+$light_grey_color: #ECECEC;
+
+
+$dark_black_color: #0A0B0D;
+$dark_white_color: #f0f0f0;
+$dark_grey_color: #25282A;
+
+$positive_color: #1CDB18;
+$negetive_color: #EC4237;
+
+
+
+* {
+    transition: color .3s linear, background-color .3s linear, border-color .3s linear;
+    -webkit-transition: color .0s linear, background-color .3s linear, border-color .3s linear;
+
+}
+
+.App.light {
+    --base: #{$light_black_color};
+    --complement: #{$light_white_color};
+    --shade-complement: #{$light_grey_color};
+
+    --positive: #{$positive_color};
+    --negetive: #{$negetive_color};
+}
+
+.App.dark {
+    --base: #{$dark_white_color};
+    --complement: #{$dark_black_color};
+    --shade-complement: #{$dark_grey_color};
+
+    --positive: #{$positive_color};
+    --negetive: #{$negetive_color};
+}
+
+
+
+// $base: #000000;
+$base: var(--base);
+$complement: var(--complement);
+$shade_complement: var(--shade-complement);
+
+$positive: var(--positive);
+$negetive: var(--negetive);

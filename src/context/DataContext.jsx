@@ -14,8 +14,24 @@ export const DataContext = createContext();
 export default function DataContextProvider({ children }) {
   //const [entries, setEntries] = useState(null);
 
+  const themeOptions = ["light", "dark"];
+
   const [year, setYear] = useState(new Date().getFullYear());
   const [month, setMonth] = useState(new Date().getMonth());
+
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || themeOptions[0]
+  );
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const ChangeTheme = () => {
+    let curThemeId = themeOptions.findIndex((ele) => ele === theme);
+    curThemeId = (curThemeId + 1) % themeOptions.length;
+    setTheme(themeOptions[curThemeId]);
+  };
 
   const NextYearHandler = () => {
     setYear((old) => old + 1);
@@ -30,12 +46,20 @@ export default function DataContextProvider({ children }) {
   };
 
   const entries = useLiveQuery(async () => {
-    return await db.entries
-      .where({
-        month,
-        year,
-      })
-      .toArray();
+    if (month !== 12) {
+      return await db.entries
+        .where({
+          month,
+          year,
+        })
+        .toArray();
+    } else {
+      console.log([...Array(13).keys()].map((val) => [val, year]));
+      return await db.entries
+        .where("[month+year]")
+        .anyOf([...Array(13).keys()].map((val) => [val, year]))
+        .toArray();
+    }
   }, [month, year]);
 
   // useEffect(() => {
@@ -134,6 +158,9 @@ export default function DataContextProvider({ children }) {
         PreviousYearHandler,
         NextYearHandler,
         MonthClickHandler,
+
+        theme,
+        ChangeTheme,
       }}
     >
       {children}

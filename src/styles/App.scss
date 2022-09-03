@@ -11,8 +11,11 @@
 
   font-size: 18px;
 
-
+  background-color: $complement;
+  color: $base;
 }
+
+
 
 .stic {
   position: sticky;
@@ -20,6 +23,16 @@
   width: 100%;
   padding: 20px;
   background-color: $complement;
+
+  .top-bar {
+    padding: 10px;
+
+    #theme-changer-btn {
+      margin: auto;
+      width: 40px;
+      height: 40px;
+    }
+  }
 }
 
 
@@ -64,4 +77,20 @@ button.button {
     background-color: unset;
     color: $base;
   }
+}
+
+button.small-round-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $shade_complement;
+  border: 1px solid $complement;
+  color: $base;
+
+  font-size: 1rem;
 }

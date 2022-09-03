@@ -101,7 +101,8 @@
     input[type="text"],
     input[type="number"] {
         width: 100%;
-        background-color: $dark_complement;
+        background-color: $shade_complement;
+        color: $base;
         border: none;
 
         height: 2.3rem;

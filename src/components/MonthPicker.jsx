@@ -18,6 +18,7 @@ export default function MonthPicker() {
     "october",
     "november",
     "december",
+    "",
   ];
 
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -81,7 +82,7 @@ export default function MonthPicker() {
                         setPickerOpen(false);
                       }}
                     >
-                      {month.substring(0, 3)}
+                      {id !== 12 ? month.substring(0, 3) : year}
                     </div>
                   );
                 })}

@@ -6,14 +6,22 @@
     justify-content: center;
     align-items: center;
 
+    margin-bottom: 20px;
+
     .selected-month {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 4px;
 
+
+        padding: 4px;
+        border-radius: 4px;
+
+
         #text {
             text-transform: capitalize;
+            font-weight: 700;
         }
 
         #drop-icon {
@@ -41,7 +49,7 @@
 
             text-align: center;
 
-            background-color: $dark_complement;
+            background-color: $shade_complement;
             padding: 20px;
 
 
@@ -74,6 +82,10 @@
                     border-radius: 4px;
 
                     text-transform: capitalize;
+                }
+
+                & :last-child {
+                    grid-column: span 3;
                 }
 
             }
