@@ -1,3 +1,18 @@
+# Expense Tracker App
+
+:iphone: This is an android Progressive Web App (PWA) used for expense tracking developed with Reactjs. Users can add, edit and delete their expenses categorised into different months. The app uses IndexedDB inorder to store the data in user devices, making the app completely functional while offline.
+
+Latest version available here : [Web App](https://expense-tracker-a.netlify.app/).
+
+:warning: Warning : Clearing browser data will wipe all the data stored by the app
+
+### Technologies used
+
+ReactJS - As the front end library
+Dexie.js - For using indexedDB
+
+# CRA Readme
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
