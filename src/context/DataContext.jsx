@@ -54,7 +54,7 @@ export default function DataContextProvider({ children }) {
         })
         .toArray();
     } else {
-      console.log([...Array(13).keys()].map((val) => [val, year]));
+      //console.log([...Array(13).keys()].map((val) => [val, year]));
       return await db.entries
         .where("[month+year]")
         .anyOf([...Array(13).keys()].map((val) => [val, year]))
