@@ -33,36 +33,40 @@ function App() {
 
   const { theme, ChangeTheme } = useContext(DataContext);
 
-  return (
-    <div className={"App " + theme}>
-      <div className="stic">
-        <div className="top-bar">
-          <button
-            id="theme-changer-btn"
-            className="small-round-button"
-            onClick={(e) => {
-              ChangeTheme();
-            }}
-          >
-            <Icon icon="foundation:contrast" />
-          </button>
+  try {
+    return (
+      <div className={"App " + theme}>
+        <div className="stic">
+          <div className="top-bar">
+            <button
+              id="theme-changer-btn"
+              className="small-round-button"
+              onClick={(e) => {
+                ChangeTheme();
+              }}
+            >
+              <Icon icon="foundation:contrast" />
+            </button>
+          </div>
+          <MonthPicker />
+          <TotalAmount totalAmount={500} />
+          <ActionButtons
+            onAddClickHandler={OpenEntryForm}
+            onEditClickHandler={TurnOnEditMode}
+            editMode={editMode}
+          />
         </div>
-        <MonthPicker />
-        <TotalAmount totalAmount={500} />
-        <ActionButtons
-          onAddClickHandler={OpenEntryForm}
-          onEditClickHandler={TurnOnEditMode}
-          editMode={editMode}
+        <EntryList edit={editMode} onEntryEditClick={OpensEditEntry} />
+        <EntryForm
+          show={showEntryForm}
+          entry={editEntry}
+          entryCloseHandler={CloseEntryForm}
         />
       </div>
-      <EntryList edit={editMode} onEntryEditClick={OpensEditEntry} />
-      <EntryForm
-        show={showEntryForm}
-        entry={editEntry}
-        entryCloseHandler={CloseEntryForm}
-      />
-    </div>
-  );
+    );
+  } catch (error) {
+    return <>{error.toString()}</>;
+  }
 }
 
 export default App;

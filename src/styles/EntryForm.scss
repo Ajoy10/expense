@@ -9,6 +9,7 @@
     bottom: 0px;
 
 
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,7 +46,7 @@
         top: -150vh;
         width: 100vw;
         height: 150vh;
-        background-color: #000000;
+        background-color: #424242;
         opacity: .5;
     }
 
@@ -107,6 +108,21 @@
 
         height: 2.3rem;
 
+    }
+
+
+    @media screen and (min-width:800px) {
+
+        max-width: 400px;
+
+        button {
+            min-width: max-content;
+            width: 100%;
+        }
+
+
+
+        &::before {}
     }
 }
 

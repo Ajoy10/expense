@@ -8,6 +8,7 @@
 
     margin-bottom: 20px;
 
+
     .selected-month {
         display: flex;
         justify-content: center;
@@ -34,6 +35,9 @@
     .month-picker-wrapper {
         position: relative;
         width: 100%;
+
+        max-width: 400px;
+
 
 
 

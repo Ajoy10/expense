@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import DataContextProvider from "./context/DataContext";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <DataContextProvider>
-      <App />
-    </DataContextProvider>
+    <ErrorBoundary>
+      <DataContextProvider>
+        <App />
+      </DataContextProvider>
+    </ErrorBoundary>
   </React.StrictMode>
 );
 

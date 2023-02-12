@@ -27,6 +27,7 @@ function Form({ entry, entryCloseHandler }) {
   const [title, setTitle] = useState(entry ? entry.title : "");
   const [moneyInput, setMoneyInput] = useState(entry ? entry.money : "");
   const [money, setMoney] = useState(entry ? entry.money : 0);
+  const [moneyIsLoss, setMoneyIsLoss] = useState(false);
 
   const titleElement = useRef(null);
   const moneyElement = useRef(null);
@@ -45,6 +46,15 @@ function Form({ entry, entryCloseHandler }) {
 
     return true;
   };
+
+  useEffect(() => {
+    console.log(parseFloat(moneyInput) >= 0);
+    if (moneyIsLoss && parseFloat(moneyInput) >= 0) {
+      setMoneyInput((prev) => (parseFloat(prev) * -1).toString());
+    } else if (!moneyIsLoss && parseFloat(moneyInput) < 0) {
+      setMoneyInput((prev) => (parseFloat(prev) * -1).toString());
+    }
+  }, [moneyIsLoss, moneyInput]);
 
   useEffect(() => {
     titleElement.current.focus();
@@ -81,9 +91,29 @@ function Form({ entry, entryCloseHandler }) {
             id="form-money"
             value={moneyInput}
             onChange={(e) => {
+              if (e.target.value < 0) {
+                setMoneyIsLoss(true);
+              } else {
+                setMoneyIsLoss(false);
+              }
               setMoneyInput(e.target.value);
               const parsed = parseFloat(e.target.value);
               if (!Object.is(NaN, parsed)) setMoney(parsed);
+            }}
+          />
+        </div>
+
+        <div className="input-group">
+          <label className="label" htmlFor="loss-checkbox">
+            Loss
+          </label>
+          <input
+            type="checkbox"
+            name="loss-checkbox"
+            id="loss-checkbox"
+            checked={moneyIsLoss}
+            onChange={(e) => {
+              setMoneyIsLoss(e.target.checked);
             }}
           />
         </div>
