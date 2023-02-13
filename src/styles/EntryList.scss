@@ -38,18 +38,23 @@
         width: 100%;
 
         padding: 10px 10px;
-        height: 50px;
         border-top: solid 1px $shade_complement;
 
         .entry-title {
             font-weight: 500;
             font-size: .9rem;
 
+            width: 40%;
+            overflow-wrap: break-word;
+            padding: 4px;
         }
 
         .entry-edit {
             display: flex;
             gap: 4px;
+
+            width: 20%;
+
         }
 
         .entry-money {
@@ -58,6 +63,7 @@
             align-items: center;
             font-weight: 500;
 
+            width: 40%;
 
             .entry-icon {
                 color: $positive;

@@ -16,6 +16,7 @@ export default function EntryForm({
 
   return (
     <div className="cmp-entry-form">
+      <div id="before"></div>
       <Form entry={entry} entryCloseHandler={entryCloseHandler} />
     </div>
   );
@@ -26,21 +27,29 @@ function Form({ entry, entryCloseHandler }) {
 
   const [title, setTitle] = useState(entry ? entry.title : "");
   const [moneyInput, setMoneyInput] = useState(entry ? entry.money : "");
-  const [money, setMoney] = useState(entry ? entry.money : 0);
-  const [moneyIsLoss, setMoneyIsLoss] = useState(false);
+  // const [money, setMoney] = useState(entry ? entry.money : 0);
+  const [moneyIsLoss, setMoneyIsLoss] = useState(
+    entry ? entry.money < 0 : false
+  );
 
   const titleElement = useRef(null);
   const moneyElement = useRef(null);
 
+  const money = () => {
+    const parsed = parseFloat(moneyInput);
+    console.log(parsed);
+    return parsed;
+  };
+
   const Validate = (e) => {
-    if (title.trim() === "") {
-      e.preventDefault();
-      titleElement.current.focus();
-      return false;
-    } else if (money !== parseFloat(moneyInput)) {
+    if (Object.is(NaN, money())) {
       e.preventDefault();
       moneyElement.current.focus();
 
+      return false;
+    } else if (title.trim() === "") {
+      e.preventDefault();
+      titleElement.current.focus();
       return false;
     }
 
@@ -48,7 +57,7 @@ function Form({ entry, entryCloseHandler }) {
   };
 
   useEffect(() => {
-    console.log(parseFloat(moneyInput) >= 0);
+    // console.log(parseFloat(moneyInput) >= 0);
     if (moneyIsLoss && parseFloat(moneyInput) >= 0) {
       setMoneyInput((prev) => (parseFloat(prev) * -1).toString());
     } else if (!moneyIsLoss && parseFloat(moneyInput) < 0) {
@@ -97,8 +106,6 @@ function Form({ entry, entryCloseHandler }) {
                 setMoneyIsLoss(false);
               }
               setMoneyInput(e.target.value);
-              const parsed = parseFloat(e.target.value);
-              if (!Object.is(NaN, parsed)) setMoney(parsed);
             }}
           />
         </div>
@@ -126,7 +133,7 @@ function Form({ entry, entryCloseHandler }) {
                 e.preventDefault();
 
                 if (!Validate(e)) return;
-                UpdateEntry(entry.id, title, money);
+                UpdateEntry(entry.id, title, money());
                 entryCloseHandler();
               }}
             >
@@ -139,8 +146,8 @@ function Form({ entry, entryCloseHandler }) {
                 e.preventDefault();
 
                 if (!Validate(e)) return;
-                AddEntry(title, money);
-                setMoney(0);
+                AddEntry(title, money());
+                // setMoney(0);
                 setMoneyInput("");
                 setTitle("");
                 titleElement.current.focus();

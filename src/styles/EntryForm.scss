@@ -1,7 +1,7 @@
 @import "utilities/variables";
 
 .cmp-entry-form {
-    width: 100%;
+    width: 100vw;
 
     height: fit-content;
 
@@ -37,7 +37,7 @@
         }
     }
 
-    &::before {
+    #before {
         content: "";
         z-index: 9;
 
@@ -52,6 +52,7 @@
 
     .cmp-form {
         width: 100%;
+        max-width: 400px;
         padding: 25px;
 
         // transform: translateY(500px);
@@ -113,7 +114,6 @@
 
     @media screen and (min-width:800px) {
 
-        max-width: 400px;
 
         button {
             min-width: max-content;
@@ -122,7 +122,6 @@
 
 
 
-        &::before {}
     }
 }
 
