@@ -6,10 +6,14 @@ import "../styles/EntryList.scss";
 import Entry from "./Entry";
 
 export default function EntryList({ edit, onEntryEditClick }) {
-  const { entries, RemoveEntry } = useContext(DataContext);
-
+  const { entries, allEntries, RemoveEntry } = useContext(DataContext);
+  const blob = new Blob([JSON.stringify(allEntries)], { type: "text/json" });
+  const url = URL.createObjectURL(blob);
   return (
     <div className="cmp-entry-list">
+      <a download="debug.json" href={url}>
+        Download json
+      </a>
       {entries && entries.length > 0 ? (
         <></>
       ) : (

@@ -45,6 +45,10 @@ export default function DataContextProvider({ children }) {
     setMonth(_month);
   };
 
+  const allEntries = useLiveQuery(async () => {
+    return await db.entries.toArray();
+  });
+
   const entries = useLiveQuery(async () => {
     if (month !== 12) {
       return await db.entries
@@ -148,6 +152,7 @@ export default function DataContextProvider({ children }) {
     <DataContext.Provider
       value={{
         entries,
+        allEntries,
         AddEntry,
         UpdateEntry,
         RemoveEntry,
